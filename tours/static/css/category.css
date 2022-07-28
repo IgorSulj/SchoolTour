@@ -1,0 +1,151 @@
+.head__wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -55px;
+  z-index: 0;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  min-height: 220px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/static/img/Road.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 60px 0 30px 0;
+  margin-bottom: 30px;
+}
+.head h1 {
+  font-family: Nunito, sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: white;
+  margin: 0;
+  align-self: center;
+}
+.head .buttons {
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  gap: 20px;
+}
+.head .usual-button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@media (max-width: 1400px) {
+  .head .buttons {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .head .buttons .usual-button {
+    padding: 5px 15px;
+  }
+}
+.pages {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.button {
+  background-color: #3C7AAE;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+}
+
+.note {
+  font-family: Nunito, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 16px;
+  margin-bottom: 30px;
+}
+
+.tours {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 80px;
+  max-width: 1440px;
+  padding: 0 40px;
+  margin: 0 auto 80px;
+}
+
+.tour-wrapper {
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.tour {
+  border: 2px solid #3C7AAE;
+  border-radius: 10px;
+  width: 400px;
+  font-family: Nunito, sans-serif;
+  overflow: hidden;
+}
+
+.image {
+  height: 300px;
+  background-color: lightgray;
+  margin-bottom: 18px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 36px 15px;
+  gap: 18px;
+}
+
+.info > * {
+  margin: 0;
+}
+
+.days {
+  font-weight: 600;
+  font-size: 14px;
+  color: black;
+  align-self: flex-end;
+}
+
+.name {
+  font-weight: 800;
+  font-size: 16px;
+  color: #3C7AAE;
+}
+
+.subname {
+  font-weight: 800;
+  font-size: 16px;
+  color: #7FD8C2;
+}
+
+.booking {
+  padding: 5px 20px;
+  background: #3C7AAE;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+}/*# sourceMappingURL=category.css.map */

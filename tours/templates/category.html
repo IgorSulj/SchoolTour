@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Главная{% endblock title %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/category.css' %}">{% endblock head %}
+{% block content %}
+<div class="head__wrapper">
+    <div class="head">
+        <h1>НАШИ ТУРЫ</h1>
+        <div class="buttons" id="buttons">
+            {% for category in categories %}
+            <a href="{% url 'tours:category' category.slug %}" class="usual-button 
+            {% if category.slug == slug %}active{% endif %}">{{ category }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="tours">
+    {% for tour in page.object_list %}
+    <a href="#" class="tour-wrapper">
+        <div class="tour">
+            <div class="image"></div>
+            <div class="info">
+                <p class="days">Дней: {{ tour.days.count }}</p>
+                <p class="name">{{ tour.name }}</p>
+                <p class="subname">{{ tour.subname }}</p>
+                <div class="booking">Подробнее</div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+<div class="pages">
+    {% for num in paginator.page_range %}
+    <a href="?page={{ num }}" class="button">{{ num }}</a>
+    {% endfor %}
+</div>
+<p class="note">
+    Здесь Вы можете познакомиться с наиболее популярными маршрутами экскурсий и туров. Также, по Вашему желанию мы разработаем  новые маршруты как по Беларуси, так и по России, Европе. Для этого необходимо связаться с нами любым удобным способом: телефон +375 33 649 93 76 или электронная почта infooffice.rabota@gmail.com
+</p>
+{% endblock content %}
