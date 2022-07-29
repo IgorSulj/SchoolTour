@@ -8,15 +8,19 @@
         <h1>НАШИ ТУРЫ</h1>
         <div class="buttons" id="buttons">
             {% for category in categories %}
-            <a href="{% url 'tours:category' category.slug %}" class="usual-button 
-            {% if category.slug == slug %}active{% endif %}">{{ category }}</a>
+            {% if category.slug == slug %}
+            <a href="{% url 'tours:main_page' %}" class="usual-button active">{{ category }}</a>
+            {% else %}
+            <a href="{% url 'tours:category' category.slug %}" class="usual-button">{{ category }}</a>
+            {% endif %}
+            
             {% endfor %}
         </div>
     </div>
 </div>
 <div class="tours">
     {% for tour in page.object_list %}
-    <a href="#" class="tour-wrapper">
+    <a href="{% url 'tours:tour' tour.slug %}" class="tour-wrapper">
         <div class="tour">
             <div class="image"></div>
             <div class="info">

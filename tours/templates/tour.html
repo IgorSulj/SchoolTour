@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ tour.name }}{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tour.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="head">
+    <h1>{{ tour.name }}</h1>
+</div>
+<div class="wrapper">
+    <h2 class="subheader">{{ tour.subname }}</h2>
+    <h3 class="program">Программа тура</h3>
+    <div class="days-program">
+        {% for day in tour.days.all %}
+        <div class="day">
+            <p>{{ day.day_number }} день</p>
+            <div class="images">
+                {% for image in day.all_images %}
+                <img src="{{ image.url }}" alt="">
+                {% endfor %}
+            </div>
+            <p class="text">{{ day.description | linebreaksbr }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="info">
+        <div>
+            <h3>Входит в стоимость</h3>
+            <p class="text">
+                {{ tour.price_includes | linebreaksbr }}
+            </p>
+        </div>
+        <div>
+            <h3>Дополнительно оплачивается</h3>
+            <p class="text">
+                {{ tour.addons | linebreaksbr }}
+            </p>
+        </div>
+    </div>
+    <div class="price">
+        <h2>Стоимость и наличие мест</h2>
+        <div class="price__items">
+            <div class="price__items__titles">
+                <p>Выезд</p>
+                <p>Стоимость</p>
+                <p>Наличие</p>
+                <p></p>
+            </div>
+            {% for date in tour.dates.all %}
+            <div class="price__item">
+                <div><p>{{ date.start_date | date:"d.m.Y" }}{% if date.end_date %} - {{ date.end_date | date:"d.m.Y" }}{% endif %}</p></div>
+                <div><p>{{ date.price }}</p></div>
+                <div><p>{{ date.places }}</p></div>
+                <div>
+                    <a href="#" class="usual-button">Забронировать</a>
+                    <div class="fill"></div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -35,16 +35,16 @@ class Tour(models.Model):
 
 
 class TourDay(models.Model):
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='days')
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='days', verbose_name='Тур')
     day_number = models.IntegerField(verbose_name='Номер дня')
     description = models.TextField(verbose_name='Описание')
-    img1 = models.ImageField(verbose_name='Фото 1', blank=True, null=True)
-    img2 = models.ImageField(verbose_name='Фото 2', blank=True, null=True)
-    img3 = models.ImageField(verbose_name='Фото 3', blank=True, null=True)
-    img4 = models.ImageField(verbose_name='Фото 4', blank=True, null=True)
+    img1 = models.ImageField(upload_to='tours/days/%Y/%m/%d', verbose_name='Фото 1', blank=True, null=True)
+    img2 = models.ImageField(upload_to='tours/days/%Y/%m/%d', verbose_name='Фото 2', blank=True, null=True)
+    img3 = models.ImageField(upload_to='tours/days/%Y/%m/%d', verbose_name='Фото 3', blank=True, null=True)
+    img4 = models.ImageField(upload_to='tours/days/%Y/%m/%d', verbose_name='Фото 4', blank=True, null=True)
 
     def all_images(self):
-        return filter((self.img1, self.img2, self.img3, self.img4))
+        return filter(None, (self.img1, self.img2, self.img3, self.img4))
 
     class Meta:
         constraints = [
