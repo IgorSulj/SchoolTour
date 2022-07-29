@@ -1,0 +1,134 @@
+.head__wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -55px;
+  z-index: 0;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  min-height: 220px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/static/img/Road.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 60px 0 30px 0;
+  margin-bottom: 30px;
+}
+.head h1 {
+  font-family: Nunito, sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: white;
+  margin: 0;
+  align-self: center;
+}
+.head .buttons {
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  gap: 20px;
+}
+.head .usual-button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@media (max-width: 1400px) {
+  .head .buttons {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .head .buttons .usual-button {
+    padding: 5px 15px;
+  }
+}
+.month__tour div, .month__tours__titles p {
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.months {
+  margin: 0 30px;
+}
+
+.month {
+  margin-bottom: 30px;
+}
+.month h2 {
+  font-family: Nunito, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.month.disabled {
+  display: none;
+}
+
+.month__tours {
+  background-color: #D8EDFF;
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, auto) 200px;
+  row-gap: 15px;
+  border-radius: 20px;
+}
+
+.month__tours__titles {
+  display: contents;
+}
+.month__tours__titles p {
+  margin: 0;
+  text-align: center;
+}
+
+.month__tour {
+  display: contents;
+  height: 55px;
+  background-color: white;
+  border-radius: 20px;
+}
+.month__tour div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.month__tour div p {
+  margin: 0;
+  text-align: center;
+}
+.month__tour div:nth-child(2) a {
+  color: #3C7AAE;
+  text-decoration: none;
+}
+.month__tour .usual-button {
+  background-color: #7FD8C2;
+  color: white;
+}
+
+.month__tour > * {
+  background-color: white;
+  padding: 12px 10px;
+}
+
+.month__tour > div:first-child {
+  border-radius: 20px 0 0 20px;
+}
+
+.month__tour > div:last-child {
+  border-radius: 0 20px 20px 0;
+  justify-content: flex-end;
+}
+.month__tour > div:last-child .fill {
+  height: 100%;
+  width: 35px;
+}/*# sourceMappingURL=calendar.css.map */

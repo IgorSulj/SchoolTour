@@ -1,6 +1,3 @@
-from audioop import maxpp
-from tabnanny import verbose
-from unicodedata import category
 from django.db import models
 
 # Create your models here.
@@ -21,6 +18,7 @@ class Tour(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='tours', verbose_name='Категория')
     name = models.CharField(max_length=150, verbose_name='Название')
     slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
+    image = models.ImageField(upload_to='tours/titles/%Y/%m/%d', verbose_name='Титульное фото', blank=True, null=True)
     subname = models.CharField(max_length=150, verbose_name='Подзаголовок')
     price = models.CharField(max_length=50, verbose_name='Цена')
     price_includes = models.TextField(verbose_name='В стоимость входит')
