@@ -70,10 +70,6 @@
   margin-bottom: 30px;
 }
 
-.month.disabled {
-  display: none;
-}
-
 .month__tours {
   background-color: #D8EDFF;
   padding: 30px 20px;

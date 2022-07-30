@@ -1,11 +1,3 @@
-{
-    let buttons = document.querySelectorAll("#buttons .usual-button")
-    let months = document.querySelectorAll(".month")
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].classList.toggle("nonactive", months[i].classList.contains("disabled"))
-    }
-}
-
 let buttons_block = document.getElementById("buttons")
 
 function countActiveButtons() {
@@ -21,7 +13,7 @@ function countActiveButtons() {
 
 function toggleAllMonths(key) {
     let value = key ? "inherit" : "none"
-    let months = document.querySelectorAll(".month:not(.disabled)")
+    let months = document.querySelectorAll(".month")
     for (let month of months) {
         month.style.display = value
     }
@@ -35,7 +27,6 @@ function toggleMonth(month, key) {
 buttons_block.onclick = event => {
     if (event.target.id == "buttons") return
     let classList = event.target.classList
-    if (classList.contains("nonactive")) return
 
     let active_buttons = countActiveButtons()
     if (active_buttons == 1 && classList.contains("active")) { // if it's the only active button
