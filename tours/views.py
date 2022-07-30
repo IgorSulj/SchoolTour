@@ -1,8 +1,12 @@
-from django.shortcuts import render
 from django.core.paginator import Paginator
-from .models import Category, Tour
+from django.shortcuts import render
+
+from .models import Category, Date, Tour
+from .functions import sort_dates
 
 # Create your views here.
+        
+
 
 def category_view(request, slug=None):
     page = request.GET.get("page", 1)
@@ -13,3 +17,11 @@ def category_view(request, slug=None):
     page = paginator.get_page(page)
     context = {'categories': categories, 'paginator': paginator, 'page': page, 'slug': slug}
     return render(request, 'category.html', context)
+
+
+def calendar_view(request):
+    dates_list = Date.objects.all().select_related('tour')
+    months = sort_dates(dates_list)
+    context = {'months': months}
+    return render(request, 'calendar.html', context)
+

@@ -1,3 +1,5 @@
+import datetime
+from time import strftime
 from django.db import models
 
 # Create your models here.
@@ -64,7 +66,14 @@ class Date(models.Model):
     def price(self):
         return self.date_price or self.tour.price
 
+    def __str__(self) -> str:
+        result = self.start_date.strftime('%d.%m.%Y')
+        if self.end_date:
+            result = result + '-' + self.end_date.strftime('%d.%m.%Y')
+        return f'{self.tour} ({result})'
+
     class Meta:
         verbose_name = 'Дата'
         verbose_name_plural = 'Даты'
+        ordering = ['start_date', 'end_date']
 

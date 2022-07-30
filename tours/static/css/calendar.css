@@ -28,6 +28,7 @@
 .head .buttons {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 0 10px;
   gap: 20px;
 }
@@ -36,12 +37,12 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  white-space: nowrap;
 }
 
 @media (max-width: 1400px) {
   .head .buttons {
     gap: 10px;
-    flex-wrap: wrap;
   }
   .head .buttons .usual-button {
     padding: 5px 15px;

@@ -1,205 +1,45 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta lang="ru" charset="utf-8">
-        <link href="/css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="/css/calendar/calendar.css">
-        <title>Календарь</title>
-    </head>
-    <body>
-        <header>
-            <div class="logo"></div>
-            <div class="menu"><a href="#">Туры</a></div>
-            <div class="menu"><a href="#">Календарь поездок</a></div>
-            <div class="menu"><a href="#">Выпускной 4 класс</a></div>
-            <div class="menu"><a href="#">Последний звонок 2023</a></div>
-            <div class="menu"><a href="#">Контакты</a></div>
-            <div>
-                <a href="#" class="usual-button">Заказать звонок</a>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Календарь{% endblock title %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/calendar.css' %}">{% endblock head %}
+{% block content %}
+<div class="head__wrapper">
+    <div class="head">
+        <h1>Календарь туров</h1>
+        <div class="buttons" id="buttons">
+            {% for month in months %}
+            <div class="usual-button" data-month={{ forloop.counter0 }}>{{ month.month | date:"F Y" }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="months">
+    {% for month in months %}
+    <div class="month">
+        <h2>{{ month.month | date:"F Y" }}</h2>
+        <div class="month__tours">
+            <div class="month__tours__titles">
+                <p>Выезд</p>
+                <p>Название тура</p>
+                <p>Стоимость</p>
+                <p>Наличие</p>
+                <p></p>
             </div>
-            <div class="annotation">
-                +375 33 649 93 76<br>@schooltour.by
-            </div>
-        </header>
-        <article>
-            <div class="head__wrapper">
-                <div class="head">
-                    <h1>Календарь туров</h1>
-                    <div class="buttons" id="buttons">
-                        <div class="usual-button" data-month=0>Январь</div>
-                        <div class="usual-button" data-month=1>Февраль</div>
-                        <div class="usual-button" data-month=2>Март</div>
-                        <div class="usual-button" data-month=3>Апрель</div>
-                        <div class="usual-button" data-month=4>Май</div>
-                        <div class="usual-button" data-month=5>Июнь</div>
-                        <div class="usual-button" data-month=6>Июль</div>
-                        <div class="usual-button" data-month=7>Август</div>
-                        <div class="usual-button" data-month=8>Сентябрь</div>
-                        <div class="usual-button" data-month=9>Октябрь</div>
-                        <div class="usual-button" data-month=10>Ноябрь</div>
-                        <div class="usual-button" data-month=11>Декабрь</div>
-                    </div>
+            {% for date in month.dates %}
+            <div class="month__tour">
+                <div><p>{{ date.start_date | date:"d.m.Y" }}{% if date.end_date %} - {{ date.end_date | date:"d.m.Y" }}{% endif %}</p></div>
+                <div><p><a href="{% url 'tours:tour' date.tour.slug %}">{{ date.tour }}</a></p></div>
+                <div><p>{{ date.price }}</p></div>
+                <div><p>{{ date.places }}</p></div>
+                <div>
+                    <div class="usual-button">Забронировать</div>
+                    <div class="fill"></div>
                 </div>
             </div>
-            
-            <div class="months">
-                <div class="month">
-                    <h2>Январь</h2>
-                    <div class="month__tours">
-                        <div class="month__tours__titles">
-                            <p>Выезд</p>
-                            <p>Название тура</p>
-                            <p>Стоимость</p>
-                            <p>Наличие</p>
-                            <p></p>
-                        </div>
-                        <div class="month__tour">
-                            <div><p>13.07.2022-18.07.2022</p></div>
-                            <div><p><a href="#">Волшебный Петербург 5 дней</a></p></div>
-                            <div><p>125$ + 100 бел. руб.</p></div>
-                            <div><p>45</p></div>
-                            <div>
-                                <div class="usual-button">Забронировать</div>
-                                <div class="fill"></div>
-                            </div>
-                        </div>
-                        <div class="month__tour">
-                            <div><p>13.07.2022-18.07.2022</p></div>
-                            <div><p><a href="#">Волшебный Петербург 5 дней и ещё</a></p></div>
-                            <div><p>125$ + 100 бел. руб.</p></div>
-                            <div><p>45</p></div>
-                            <div>
-                                <div class="usual-button">Забронировать</div>
-                                <div class="fill"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="month">
-                    <h2>Февраль</h2>
-                    <div class="month__tours">
-                        <div class="month__tours__titles">
-                            <p>Выезд</p>
-                            <p>Название тура</p>
-                            <p>Стоимость</p>
-                            <p>Наличие</p>
-                            <p></p>
-                        </div>
-                        <div class="month__tour">
-                            <div><p>13.07.2022-18.07.2022</p></div>
-                            <div><p><a href="#">Волшебный Петербург 5 дней</a></p></div>
-                            <div><p>125$ + 100 бел. руб.</p></div>
-                            <div><p>45</p></div>
-                            <div>
-                                <div class="usual-button">Забронировать</div>
-                                <div class="fill"></div>
-                            </div>
-                        </div>
-                        <div class="month__tour">
-                            <div><p>13.07.2022-18.07.2022</p></div>
-                            <div><p><a href="#">Волшебный Петербург 5 дней и ещё много чего</a></p></div>
-                            <div><p>125$ + 100 бел. руб.</p></div>
-                            <div><p>45</p></div>
-                            <div>
-                                <div class="usual-button">Забронировать</div>
-                                <div class="fill"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="month disabled">
-                    <h2>Март</h2>
-                    <div class="month__tours"></div>
-                </div>
-                <div class="month disabled">
-                    <h2>Апрель</h2>
-                    <div class="month__tours"></div>
-                </div>
-                <div class="month">
-                    <h2>Май</h2>
-                    <div class="month__tours">
-                        <div class="month__tours__titles">
-                            <p>Выезд</p>
-                            <p>Название тура</p>
-                            <p>Стоимость</p>
-                            <p>Наличие</p>
-                            <p></p>
-                        </div>
-                        <div class="month__tour">
-                            <div><p>13.07.2022-18.07.2022</p></div>
-                            <div><p><a href="#">Волшебный Петербург 5 дней</a></p></div>
-                            <div><p>125$ + 100 бел. руб.</p></div>
-                            <div><p>45</p></div>
-                            <div>
-                                <div class="usual-button">Забронировать</div>
-                                <div class="fill"></div>
-                            </div>
-                        </div>
-                        <div class="month__tour">
-                            <div><p>13.07.2022-18.07.2022</p></div>
-                            <div><p><a href="#">Волшебный Петербург 5 дней и ещё много чего</a></p></div>
-                            <div><p>125$ + 100 бел. руб.</p></div>
-                            <div><p>45</p></div>
-                            <div>
-                                <div class="usual-button">Забронировать</div>
-                                <div class="fill"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="month disabled">
-                    <h2>Июнь</h2>
-                    <div class="month__tours"></div>
-                </div>
-                <div class="month disabled">
-                    <h2>Июль</h2>
-                    <div class="month__tours"></div>
-                </div>
-                <div class="month disabled">
-                    <h2>Август</h2>
-                    <div class="month__tours"></div>
-                </div>
-                <div class="month disabled">
-                    <h2>Сентябрь</h2>
-                    <div class="month__tours"></div>
-                </div>
-                <div class="month disabled">
-                    <h2>Октябрь</h2>
-                    <div class="month__tours"></div>
-                </div>
-                <div class="month disabled">
-                    <h2>Ноябрь</h2>
-                    <div class="month__tours"></div>
-                </div>
-                <div class="month disabled">
-                    <h2>Декабрь</h2>
-                    <div class="month__tours"></div>
-                </div>
-            </div>
-        </article>
-        <footer>
-            <ul>
-                <li><a href="#">О нас</a></li>
-                <li><a href="#">Контакты</a></li>
-                <li><a href="#">Оплата</a></li>
-            </ul>
-            <ul>
-                <li><a href="#">Беларусь</a></li>
-                <li><a href="#">Россия</a></li>
-                <li><a href="#">Европа</a></li>
-            </ul>
-            <ul>
-                <li><a href="#">Выпускной 4 класс</a></li>
-                <li><a href="#">Последний звонок 2023</a></li>
-                <li><a href="#">Экскурсоводы</a></li>
-            </ul>
-            <div>
-                ООО ИнфоОфис, УНП 192411862<br>
-                Беларусь, Минск, пр. Партизанский, 81-507<br>
-                тел. +375 33 649 93 76 (Viber, WhatsApp)<br>
-                infooffice.rabota@gmail.com
-            </div>
-        </footer>
-        <script src="/static/scripts/calendar.js"></script>
-    </body>
-</html>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+{% block last %}<script src="{% static 'scripts/calendar.js' %}"></script>{% endblock last %}

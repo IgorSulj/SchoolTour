@@ -12,8 +12,8 @@
 <body>
     <header>
         <div class="logo"></div>
-        <div class="menu"><a href="#">Туры</a></div>
-        <div class="menu"><a href="#">Календарь поездок</a></div>
+        <div class="menu"><a href="{% url 'tours:main_page' %}">Туры</a></div>
+        <div class="menu"><a href="{% url 'tours:calendar' %}">Календарь поездок</a></div>
         <div class="menu"><a href="#">Выпускной 4 класс</a></div>
         <div class="menu"><a href="#">Последний звонок 2023</a></div>
         <div class="menu"><a href="#">Контакты</a></div>
@@ -51,5 +51,6 @@
             <a href="" class="login">для администратора</a>
         </div>
     </footer>
+    {% block last %}{% endblock last %}
 </body>
 </html>
