@@ -20,6 +20,8 @@ class DateInline(admin.TabularInline):
 
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
+    list_display = ['__str__', 'is_top_tour']
+    list_editable = ['is_top_tour']
     prepopulated_fields = {'slug': ('name',)}
     inlines = [TourDayInline, DateInline]
 

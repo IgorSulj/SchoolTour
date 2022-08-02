@@ -25,6 +25,7 @@ class Tour(models.Model):
     price = models.CharField(max_length=50, verbose_name='Цена')
     price_includes = models.TextField(verbose_name='В стоимость входит')
     addons = models.TextField(verbose_name='Дополнительно оплачивается')
+    is_top_tour = models.BooleanField(verbose_name='Отображать в меню?', db_index=True, default=False)
 
     def __str__(self):
         return self.name
@@ -48,7 +49,7 @@ class TourDay(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['tour', 'day_number'], name='Уникальный день в одном туре')
+            models.UniqueConstraint(fields=['tour', 'day_number'], name='unique day per tour')
         ]
         ordering = ['day_number']
         verbose_name = 'День тура'
