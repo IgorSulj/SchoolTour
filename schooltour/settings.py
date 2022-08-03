@@ -26,7 +26,9 @@ SECRET_KEY = os.environ.get('DJANGOSECRETKEY', 'django-insecure-t^$&pszg0m(gno-i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.schooltour.by']
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8080']
 
 
 # Application definition
@@ -77,8 +79,12 @@ WSGI_APPLICATION = 'schooltour.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ['POSTGRES_USER'],
+        'USER': os.environ['POSTGRES_USER'],
+        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
@@ -119,9 +125,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static/'
-]
+STATIC_ROOT = BASE_DIR / 'static/'
 
 MEDIA_URL = 'media/'
 
