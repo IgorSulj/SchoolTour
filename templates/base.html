@@ -12,17 +12,23 @@
 <body>
     <header>
         <div class="logo"></div>
-        <div class="menu"><a href="{% url 'tours:main_page' %}">Туры</a></div>
-        <div class="menu"><a href="{% url 'tours:calendar' %}">Календарь поездок</a></div>
-        {% for top_tour in top_tours %}
-        <div class="menu"><a href="{% url 'tours:tour' top_tour.slug %}">{{ top_tour.name }}</a></div>
-        {% endfor %}
-        <div class="menu"><a href="{% url 'contacts' %}">Контакты</a></div>
-        <div>
-            <a href="#" class="usual-button">Заказать звонок</a>
+        <div id="header__menu">
+            <div class="menu"><a href="#">Туры</a></div>
+            <div class="menu"><a href="#">Календарь поездок</a></div>
+            <div class="menu"><a href="#">Выпускной 4 класс</a></div>
+            <div class="menu"><a href="#">Последний звонок 2023</a></div>
+            <div class="menu"><a href="#">Контакты</a></div>
+            <div class="call-order">
+                <a href="#" class="usual-button">Заказать звонок</a>
+            </div>
+            <div class="annotation">
+                +375 33 649 93 76<br>@schooltour.by
+            </div>
         </div>
-        <div class="annotation">
-            +375 33 649 93 76<br>@schooltour.by
+        <div id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </header>
     <article>
@@ -42,6 +48,7 @@
             <a href="" class="login">для администратора</a>
         </div>
     </footer>
+    <script src="{% static 'scripts/burger_menu.js' %}"></script>
     {% block last %}{% endblock last %}
 </body>
 </html>
