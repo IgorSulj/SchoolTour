@@ -1,0 +1,85 @@
+.contacts {
+  display: flex;
+  margin-bottom: 35px;
+}
+.contacts iframe {
+  flex-grow: 1;
+}
+
+.contacts__items {
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contacts__item {
+  font-family: Nunito, sans-serif;
+  font-size: 20px;
+}
+.contacts__item p {
+  margin: 0;
+}
+.contacts__item p:first-child {
+  color: #3C7AAE;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.contacts__item p:last-child {
+  font-weight: 600;
+}
+
+.insta-info {
+  display: flex;
+  gap: 10px;
+}
+
+.info {
+  font-family: Nunito, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.insta-logo {
+  width: 26px;
+  height: 26px;
+  background: url("/static/img/instagram.png");
+}
+
+.agreements {
+  display: flex;
+  gap: 86px;
+  justify-content: right;
+}
+.agreements a {
+  padding: 5px 20px;
+  background-color: #3C7AAE;
+  color: white;
+  border-radius: 10px;
+  font-family: Nunito, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+article {
+  padding: 35px 47px 58px;
+}
+
+h1 {
+  margin-bottom: 35px;
+  font-family: Nunito, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+}
+h1 span {
+  color: #3C7AAE;
+}
+
+.note {
+  font-family: Nunito, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 80px;
+}/*# sourceMappingURL=contacts.css.map */
