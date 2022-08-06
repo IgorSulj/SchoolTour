@@ -1,5 +1,6 @@
 from django.urls import path
 from django.views.generic import DetailView
+
 from .models import Tour
 from .views import calendar_view, category_view
 
@@ -9,5 +10,5 @@ urlpatterns = [
     path('', category_view, name='main_page'),
     path('categories/<slug:slug>/', category_view, name='category'),
     path('tours/<slug:slug>', DetailView.as_view(model=Tour, template_name='tour.html'), name='tour'),
-    path('calendar/', calendar_view, name='calendar')
+    path('calendar/', calendar_view, name='calendar'),
 ]

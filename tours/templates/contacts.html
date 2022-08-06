@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Контакты{% endblock title %}
+{% block head %}<link href="{% static 'css/contacts.css' %}" rel="stylesheet">{% endblock head %}
+{% block content %}
+<h1><span>SchoolTour</span> - нескучные прогулки по городам и странам для школьников!</h1>
+<p class="note">Наша команда поможет подобрать экскурсию или тур для школьников любого возраста. Мы учитываем интересы детей и родителей, подсказываем наиболее интересные варианты. Позвоните нам по телефону +375 33 649 93 76 и мы поможем подобрать тур для Вас.</p>
+<div class="contacts">
+    <div class="contacts__items">
+        <div class="contacts__item">
+            <p>Адрес офиса:</p>
+            <p>Беларусь, Минск, пр. Партизанский, 81-507</p>
+        </div>
+        <div class="contacts__item">
+            <p>Телефон:</p>
+            <p>+375 33 649 93 76</p>
+        </div>
+        <div class="contacts__item">
+            <p>Электронная почта:</p>
+            <p>infooffice.rabota@gmail.com</p>
+        </div>
+        <div class="contacts__item">
+            <p>График работы:</p>
+            <p>пн-пт - с 11:00 до 19:00<br>
+            сб-вс - выходной</p>
+        </div>
+        <div class="insta-info">
+            <div class="insta-logo"></div>
+            <div class="info">@schooltour.by</div>
+        </div>
+    </div>
+    <iframe
+    style="border:0"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFPwcGtB_pyLBHIUWT5Lgrdejx1iBSVz8&q=Экскурсии школьникам">
+    </iframe>
+</div>
+<div class="agreements">
+    <a href="">Способ оплаты</a>
+    <a href="">Договор с туристом</a>
+</div>
+{% endblock content %}
