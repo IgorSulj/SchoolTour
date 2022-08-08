@@ -1,0 +1,107 @@
+.policy-agree label, .attention {
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+article {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.wrapper {
+  max-width: 760px;
+  flex-grow: 1;
+}
+
+.form {
+  padding: 20px 30px;
+  background-color: #D8EDFF;
+  border-radius: 10px;
+}
+
+h1 {
+  font-family: Nunito, sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+input, textarea {
+  display: block;
+  max-width: 930px;
+  border-radius: 20px;
+  font-family: Nunito, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 10px;
+  border: none;
+}
+
+input {
+  height: 44px;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  font-family: Nunito, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  font-family: Nunito, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+input::placeholder, textarea::placeholder {
+  font-family: Nunito, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.form__fields__bottom {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.attention {
+  color: #3C7AAE;
+  text-align: center;
+}
+
+.policy-agree {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.policy-agree input {
+  width: 33px;
+  height: 33px;
+  flex-shrink: 0;
+  margin: 0;
+}
+button {
+  border: none;
+  background-color: #3C7AAE;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-family: Nunito, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}/*# sourceMappingURL=bookform.css.map */
