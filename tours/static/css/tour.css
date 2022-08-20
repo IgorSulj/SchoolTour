@@ -121,7 +121,7 @@
   background-color: #D8EDFF;
   padding: 30px 20px;
   display: grid;
-  grid-template-columns: repeat(3, auto) 200px;
+  grid-template-columns: repeat(3, auto);
   row-gap: 15px;
   border-radius: 20px;
 }
@@ -170,7 +170,6 @@
 
 .price__item > div:last-child {
   border-radius: 0 20px 20px 0;
-  justify-content: flex-end;
 }
 .price__item > div:last-child .fill {
   height: 100%;
