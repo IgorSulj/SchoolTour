@@ -49,7 +49,7 @@ class TourDay(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['tour', 'day_number'], name='unique day per tour')
+            models.UniqueConstraint(fields=['tour', 'day_number'], name='unique day per tour', deferrable=models.Deferrable.DEFERRED)
         ]
         ordering = ['day_number']
         verbose_name = 'День тура'
