@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGOSECRETKEY', 'django-insecure-t^$&pszg0m(gno-ildqd=o3pv%=x+ms$p3y6wa!5lijw1v2=tv')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ['DEBUG']))
 
 ALLOWED_HOSTS = ['www.schooltour.by']
 
