@@ -19,9 +19,6 @@
             <div class="menu"><a href="{% url 'tours:tour' top_tour.slug %}">{{ top_tour.name }}</a></div>
             {% endfor %}
             <div class="menu"><a href="{% url 'contacts' %}">Контакты</a></div>
-            <div class="call-order">
-                <a href="#" class="usual-button">Заказать звонок</a>
-            </div>
             <div class="annotation">
                 +375 33 649 93 76<br>@schooltour.by
             </div>
@@ -36,17 +33,12 @@
         {% block content %}{% endblock content %}
     </article>
     <footer>
-        <ul>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Контакты</a></li>
-            <li><a href="#">Оплата</a></li>
-        </ul>
         <div>
             ООО ИнфоОфис, УНП 192411862<br>
             Беларусь, Минск, пр. Партизанский, 81-507<br>
             тел. +375 33 649 93 76 (Viber, WhatsApp)<br>
             infooffice.rabota@gmail.com<br>
-            <a href="" class="login">для администратора</a>
+            <a href="/admin" class="login">для администратора</a>
         </div>
     </footer>
     <script src="{% static 'scripts/burger_menu.js' %}"></script>

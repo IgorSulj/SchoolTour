@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Главная{% endblock title %}
-{% block head %}<link rel="stylesheet" href="{% static 'css/category.css' %}">{% endblock head %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/category.css' %}?1">{% endblock head %}
 {% block content %}
 <div class="head__wrapper">
     <div class="head">
@@ -22,7 +22,7 @@
     {% for tour in page.object_list %}
     <a href="{% url 'tours:tour' tour.slug %}" class="tour-wrapper">
         <div class="tour">
-            <div class="image"></div>
+            <img class="image" src="{% if tour.image %}{{ tour.image.url }}{% endif %}">
             <div class="info">
                 <p class="days">Дней: {{ tour.days.count }}</p>
                 <p class="name">{{ tour.name }}</p>
