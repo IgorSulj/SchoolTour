@@ -45,17 +45,12 @@
                 <p>Выезд</p>
                 <p>Стоимость</p>
                 <p>Наличие</p>
-                <p></p>
             </div>
             {% for date in tour.dates.all %}
             <div class="price__item">
                 <div><p>{{ date.start_date | date:"d.m.Y" }}{% if date.end_date %} - {{ date.end_date | date:"d.m.Y" }}{% endif %}</p></div>
                 <div><p>{{ date.price }}</p></div>
                 <div><p>{{ date.places }}</p></div>
-                <div>
-                    <a href="#" class="usual-button">Забронировать</a>
-                    <div class="fill"></div>
-                </div>
             </div>
             {% endfor %}
             

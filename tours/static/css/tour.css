@@ -121,7 +121,7 @@
   background-color: #D8EDFF;
   padding: 30px 20px;
   display: grid;
-  grid-template-columns: repeat(3, auto) 200px;
+  grid-template-columns: repeat(3, auto);
   row-gap: 15px;
   border-radius: 20px;
 }

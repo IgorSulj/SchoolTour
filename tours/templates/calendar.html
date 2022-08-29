@@ -23,7 +23,6 @@
                 <p>Название тура</p>
                 <p>Стоимость</p>
                 <p>Наличие</p>
-                <p></p>
             </div>
             {% for date in month.dates %}
             <div class="month__tour">
@@ -31,10 +30,6 @@
                 <div><p><a href="{% url 'tours:tour' date.tour.slug %}">{{ date.tour }}</a></p></div>
                 <div><p>{{ date.price }}</p></div>
                 <div><p>{{ date.places }}</p></div>
-                <div>
-                    <div class="usual-button">Забронировать</div>
-                    <div class="fill"></div>
-                </div>
             </div>
             {% endfor %}
         </div>

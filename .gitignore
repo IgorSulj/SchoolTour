@@ -6,3 +6,6 @@ db.sqlite3
 */migrations/
 .vscode/
 media/
+static/
+!*/static/
+*.pyc
