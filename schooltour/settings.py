@@ -24,9 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGOSECRETKEY', 'django-insecure-t^$&pszg0m(gno-ildqd=o3pv%=x+ms$p3y6wa!5lijw1v2=tv')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< Updated upstream
 DEBUG = True
 
 ALLOWED_HOSTS = []
+=======
+DEBUG = False
+
+ALLOWED_HOSTS = ['schooltour.by']
+>>>>>>> Stashed changes
 
 
 # Application definition
@@ -78,6 +84,7 @@ WSGI_APPLICATION = 'schooltour.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< Updated upstream
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
             'sql_mode': 'traditional',
@@ -87,6 +94,10 @@ DATABASES = {
         'PASSWORD': os.environ['DB_PASSWORD'],
         'HOST': 'localhost',
         'PORT': '3306',
+=======
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+>>>>>>> Stashed changes
     }
 }
 
