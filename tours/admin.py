@@ -8,6 +8,8 @@ from .models import Category, Tour, TourDay, Date
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
+    list_display = ['__str__', 'is_top_category']
+    list_editable = ['is_top_category']
 
 
 class TourDayInline(admin.StackedInline):

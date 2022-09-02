@@ -7,6 +7,7 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название')
     slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
+    is_top_category = models.BooleanField(verbose_name='Отображать в меню?', db_index=True, default=False)
 
     def __str__(self):
         return self.name
