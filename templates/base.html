@@ -15,8 +15,8 @@
         <div id="header__menu">
             <div class="menu"><a href="{% url 'tours:main_page' %}">Туры</a></div>
             <div class="menu"><a href="{% url 'tours:calendar' %}">Календарь поездок</a></div>
-            {% for top_tour in top_tours %}
-            <div class="menu"><a href="{% url 'tours:tour' top_tour.slug %}">{{ top_tour.name }}</a></div>
+            {% for link in hot_links %}
+            <div class="menu"><a href="{{ link.link }}">{{ link.name }}</a></div>
             {% endfor %}
             <div class="menu"><a href="{% url 'contacts' %}">Контакты</a></div>
             <div class="annotation">
