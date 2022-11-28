@@ -11,7 +11,7 @@ from .functions import sort_dates
 def category_view(request, slug=None):
     page = request.GET.get("page", 1)
     categories = Category.objects.filter(is_active=True)
-    tours = Tour.objects.filter(is_active=True) if slug is None else Tour.objects.filter(category__slug=slug, categories__is_active=True, is_active=True)
+    tours = Tour.objects.filter(is_active=True) if slug is None else Tour.objects.filter(category__slug=slug, category__is_active=True, is_active=True)
     tours = tours.order_by('pk')
     paginator = Paginator(tours, 9)
     page = paginator.get_page(page)
