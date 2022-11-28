@@ -177,6 +177,7 @@ body, h1, h2, h3 {
   text-decoration: none;
   transition: all ease-out 0.3s;
   cursor: pointer;
+  text-align: center;
 }
 
 .usual-button:hover {
