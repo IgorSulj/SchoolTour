@@ -8,6 +8,7 @@ class Category(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название')
     slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
     is_top_category = models.BooleanField(verbose_name='Отображать в меню?', db_index=True, default=False)
+    is_active = models.BooleanField(verbose_name='Активная категория?', db_index=True, default=True)
 
     def __str__(self):
         return self.name
@@ -27,6 +28,7 @@ class Tour(models.Model):
     price_includes = models.TextField(verbose_name='В стоимость входит')
     addons = models.TextField(verbose_name='Дополнительно оплачивается')
     is_top_tour = models.BooleanField(verbose_name='Отображать в меню?', db_index=True, default=False)
+    is_active = models.BooleanField(verbose_name='Активный тур?', db_index=True, default=True)
 
     def __str__(self):
         return self.name
