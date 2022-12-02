@@ -40,12 +40,6 @@
   font-weight: 600;
 }
 
-.insta-logo {
-  width: 26px;
-  height: 26px;
-  background: url("/static/img/instagram.png");
-}
-
 .agreements {
   display: flex;
   gap: 86px;
