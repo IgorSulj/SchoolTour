@@ -29,6 +29,18 @@ header {
   align-items: center;
 }
 
+.insta-logo {
+  width: 26px;
+  height: 26px;
+  background: url("/static/img/instagram.png");
+}
+
+.annotation .lower {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 #header__menu {
   display: contents;
 }
