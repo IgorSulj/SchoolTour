@@ -24,6 +24,7 @@
   color: white;
   margin: 0;
   align-self: center;
+  text-transform: uppercase;
 }
 .head .buttons {
   display: flex;

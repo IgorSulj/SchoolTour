@@ -2,7 +2,7 @@ from django.db.models import F, Value, SlugField
 from django.db.models.functions import ConcatPair
 from .models import Tour, Category
 
-def hot_links(request):
+def hot_links(_):
     top_tour_links = Tour.objects.filter(is_top_tour=True) \
         .annotate(link=ConcatPair(Value('/tours/'), F('slug'), output_field=SlugField())) \
         .values_list('name', 'link', named=True)
