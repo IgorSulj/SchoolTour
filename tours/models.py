@@ -1,5 +1,3 @@
-import datetime
-from time import strftime
 from django.db import models
 
 # Create your models here.
@@ -18,8 +16,21 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
 
+class Departure(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Название')
+    slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
+
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Выезд'
+        verbose_name_plural = 'Выезды'
+
+
 class Tour(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='tours', verbose_name='Категория')
+    departure = models.ForeignKey(Departure, on_delete=models.PROTECT, related_name='tours', verbose_name='Выезд', null=True)
     name = models.CharField(max_length=150, verbose_name='Название')
     slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
     image = models.ImageField(upload_to='tours/titles/%Y/%m/%d', verbose_name='Титульное фото', blank=True, null=True)
