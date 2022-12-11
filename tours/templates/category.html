@@ -24,7 +24,15 @@
         <div class="tour">
             <img class="image" src="{% if tour.image %}{{ tour.image.url }}{% endif %}">
             <div class="info">
-                <p class="days">Дней: {{ tour.days.count }}</p>
+                <div class="days-place">
+                    <p class="days">Дней: {{ tour.days.count }}</p>
+                    {% if tour.departure %}
+                    <div class="place">
+                        <div class="place__icon"></div>
+                        <p class="place__text">{{ tour.departure }}</p>
+                    </div>
+                    {% endif %}
+                </div>            
                 <p class="name">{{ tour.name }}</p>
                 <p class="subname">{{ tour.subname }}</p>
                 <div class="booking">Подробнее</div>
