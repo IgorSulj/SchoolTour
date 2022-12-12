@@ -16,8 +16,8 @@
         <div class="day">
             <p>{{ day.day_number }} день</p>
             <div class="images">
-                {% for image in day.all_images %}
-                <img src="{{ image.url }}" alt="">
+                {% for image, alt in day.all_images %}
+                <img src="{{ image.url }}" alt="{{ alt|default:"" }}">
                 {% endfor %}
             </div>
             <p class="text">{{ day.description | linebreaksbr }}</p>

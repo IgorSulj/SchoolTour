@@ -20,7 +20,8 @@
 .head h1 {
   font-family: Nunito, sans-serif;
   font-weight: 800;
-  font-size: 36px;
+  font-size: 2.25em;
+  text-align: center;
   color: white;
   margin: 0;
   align-self: center;
@@ -80,8 +81,8 @@
 }
 
 .tours {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 400px));
   justify-content: center;
   gap: 80px;
   max-width: 1440px;
@@ -101,7 +102,7 @@
   flex-direction: column;
   border: 2px solid #3C7AAE;
   border-radius: 10px;
-  width: 400px;
+  max-width: 400px;
   font-family: Nunito, sans-serif;
   overflow: hidden;
   height: 100%;
@@ -185,4 +186,19 @@
   font-size: 16px;
   color: white;
   text-decoration: none;
-}/*# sourceMappingURL=category.css.map */
+}
+
+@media (max-width: 800px) {
+  .head__wrapper {
+    position: static;
+  }
+
+  .head {
+    gap: 25px;
+  }
+
+  .tours {
+    padding: 0 10px;
+    gap: 20px;
+  }
+}

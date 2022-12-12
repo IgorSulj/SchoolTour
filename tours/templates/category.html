@@ -22,7 +22,7 @@
     {% for tour in page.object_list %}
     <a href="{% url 'tours:tour' tour.slug %}" class="tour-wrapper">
         <div class="tour">
-            <img class="image" src="{% if tour.image %}{{ tour.image.url }}{% endif %}">
+            <img class="image" src="{% if tour.image %}{{ tour.image.url }}{% endif %}" alt="{% if tour.image_alt %}{{ tour.image_alt }}{% endif %}">
             <div class="info">
                 <div class="days-place">
                     <p class="days">Дней: {{ tour.days.count }}</p>
