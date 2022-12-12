@@ -34,6 +34,7 @@ class Tour(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название')
     slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
     image = models.ImageField(upload_to='tours/titles/%Y/%m/%d', verbose_name='Титульное фото', blank=True, null=True)
+    image_alt = models.CharField(max_length=75, verbose_name='Alt-тег титульного фото', blank=True, null=True)
     subname = models.CharField(max_length=150, verbose_name='Подзаголовок')
     price = models.CharField(max_length=50, verbose_name='Цена')
     price_includes = models.TextField(verbose_name='В стоимость входит')
@@ -54,12 +55,24 @@ class TourDay(models.Model):
     day_number = models.IntegerField(verbose_name='Номер дня')
     description = models.TextField(verbose_name='Описание')
     img1 = models.ImageField(upload_to='tours/days/%Y/%m/%d', verbose_name='Фото 1', blank=True, null=True)
+    img1_alt = models.CharField(max_length=75, verbose_name='Alt-тег фото 1', blank=True, null=True)
     img2 = models.ImageField(upload_to='tours/days/%Y/%m/%d', verbose_name='Фото 2', blank=True, null=True)
+    img2_alt = models.CharField(max_length=75, verbose_name='Alt-тег фото 2', blank=True, null=True)
     img3 = models.ImageField(upload_to='tours/days/%Y/%m/%d', verbose_name='Фото 3', blank=True, null=True)
+    img3_alt = models.CharField(max_length=75, verbose_name='Alt-тег фото 3', blank=True, null=True)
     img4 = models.ImageField(upload_to='tours/days/%Y/%m/%d', verbose_name='Фото 4', blank=True, null=True)
+    img4_alt = models.CharField(max_length=75, verbose_name='Alt-тег фото 4', blank=True, null=True)
 
     def all_images(self):
-        return filter(None, (self.img1, self.img2, self.img3, self.img4))
+        print(self.img2)
+        if self.img1:
+            yield (self.img1, self.img1_alt)
+        if self.img2:
+            yield (self.img2, self.img2_alt)
+        if self.img3:
+            yield (self.img3, self.img3_alt)
+        if self.img4:
+            yield (self.img4, self.img4_alt)
 
     class Meta:
         constraints = [
