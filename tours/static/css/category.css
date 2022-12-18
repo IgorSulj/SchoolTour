@@ -150,6 +150,7 @@
 
 .place {
   display: flex;
+  align-items: center;
   gap: 7px;
 }
 
@@ -158,6 +159,7 @@
   height: 20px;
   background-image: url("/static/img/Bus.png");
   background-size: contain;
+  flex-shrink: 0;
 }
 
 .place__text {
@@ -170,12 +172,14 @@
   font-weight: 800;
   font-size: 16px;
   color: #3C7AAE;
+  text-align: center;
 }
 
 .subname {
   font-weight: 800;
   font-size: 16px;
   color: #7FD8C2;
+  text-align: center;
 }
 
 .booking {

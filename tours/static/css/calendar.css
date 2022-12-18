@@ -24,6 +24,7 @@
   color: white;
   margin: 0;
   align-self: center;
+  text-align: center;
   text-transform: uppercase;
 }
 .head .buttons {
@@ -97,8 +98,9 @@
   margin-bottom: 0;
 }
 
-.month__tour div {
+.month__tour>div {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0;
@@ -111,6 +113,21 @@
   color: #3C7AAE;
   text-decoration: none;
 }
+
+.place {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.place__icon {
+  width: 46px;
+  height: 20px;
+  background-image: url("/static/img/Bus.png");
+  background-size: contain;
+  flex-shrink: 0;
+}
+
 .month__tour .usual-button {
   background-color: #7FD8C2;
   color: white;
@@ -127,5 +144,9 @@
 @media (max-width: 500px) {
   .month__tour, .month__tours__titles {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .months {
+    margin: 0 10px;
   }
 }
