@@ -1,5 +1,6 @@
 .contacts {
   display: flex;
+  gap: 15px;
   margin-bottom: 35px;
 }
 .contacts iframe {
@@ -7,7 +8,6 @@
 }
 
 .contacts__items {
-  padding-right: 15px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -86,4 +86,18 @@ h1 span {
 
 .agreements {
   display: none;
+}
+
+@media (max-width: 1000px) {
+  .contacts {
+    flex-direction: column;
+  }
+
+  .contacts iframe {
+    height: 300px;
+  }
+
+  .note {
+    margin-bottom: 40px;
+  }
 }

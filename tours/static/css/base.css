@@ -15,6 +15,10 @@ footer ul a, .menu a {
   text-decoration: none;
 }
 
+.login {
+  color: white;
+}
+
 header {
   position: -webkit-sticky;
   position: sticky;
@@ -37,7 +41,7 @@ header {
 
 .annotation .lower {
   display: flex;
-  align-items: center;
+  justify-content: center;
   gap: 5px;
 }
 

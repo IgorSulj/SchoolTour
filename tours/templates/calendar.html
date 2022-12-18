@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Календарь{% endblock title %}
-{% block head %}<link rel="stylesheet" href="{% static 'css/calendar.css' %}?2">{% endblock head %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/calendar.css' %}?3">{% endblock head %}
 {% block content %}
 <div class="head__wrapper">
     <div class="head">
@@ -26,7 +26,13 @@
             </div>
             {% for date in month.dates %}
             <div class="month__tour">
-                <div><p>{{ date.start_date | date:"d.m.Y" }}{% if date.end_date %} - {{ date.end_date | date:"d.m.Y" }}{% endif %}</p></div>
+                <div>
+                    <p>{{ date.start_date | date:"d.m.Y" }}{% if date.end_date %} - {{ date.end_date | date:"d.m.Y" }}{% endif %}</p>
+                    <div class="place">
+                        <div class="place__icon"></div>
+                        <p class="place__text">{{ date.tour.departure }}</p>
+                    </div>
+                </div>
                 <div><p><a href="{% url 'tours:tour' date.tour.slug %}">{{ date.tour }}</a></p></div>
                 <div><p>{{ date.price }}</p></div>
                 <div><p>{{ date.places }}</p></div>
