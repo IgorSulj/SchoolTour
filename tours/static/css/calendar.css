@@ -141,6 +141,12 @@
   width: 35px;
 }
 
+@media (max-width: 800px) {
+  .head__wrapper {
+    position: static;
+  }
+}
+
 @media (max-width: 500px) {
   .month__tour, .month__tours__titles {
     grid-template-columns: repeat(2, 1fr);
