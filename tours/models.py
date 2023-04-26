@@ -1,8 +1,25 @@
 from django.db import models
+from django.db.transaction import atomic
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
+class TourDestination(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Название', db_index=True)
+    slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
+    is_main = models.BooleanField(default=False, verbose_name='Главная страна?')
+
+    class Meta:
+        verbose_name = 'Страна'
+        verbose_name_plural = 'Страны'
+    
+    def __str__(self) -> str:
+        return self.name
+
+
 class Category(models.Model):
+    destination = models.ForeignKey(TourDestination, on_delete=models.PROTECT, verbose_name='Страна', related_name='categories',
+                                    db_index=True, null=True)
     name = models.CharField(max_length=150, verbose_name='Название')
     slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
     is_top_category = models.BooleanField(verbose_name='Отображать в меню?', db_index=True, default=False)
@@ -22,7 +39,7 @@ class Departure(models.Model):
 
     def __str__(self) -> str:
         return self.name
-    
+
     class Meta:
         verbose_name = 'Выезд'
         verbose_name_plural = 'Выезды'

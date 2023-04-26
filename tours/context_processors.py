@@ -1,6 +1,6 @@
 from django.db.models import F, Value, SlugField
 from django.db.models.functions import ConcatPair
-from .models import Tour, Category
+from .models import Tour, Category, TourDestination
 
 def hot_links(_):
     top_tour_links = Tour.objects.filter(is_top_tour=True) \
@@ -11,3 +11,7 @@ def hot_links(_):
         .values_list('name', 'link', named=True)
     hot_links = top_tour_links.union(top_category_links)
     return {'hot_links': hot_links}
+
+
+def add_destinations(_):
+    return {'destinations': TourDestination.objects.all()}
