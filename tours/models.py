@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.transaction import atomic
 from django.core.exceptions import ValidationError
+from django.urls import reverse
 
 # Create your models here.
 
@@ -15,6 +16,10 @@ class TourDestination(models.Model):
     
     def __str__(self) -> str:
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse("tours:destination", kwargs={"slug": self.slug})
+    
 
 
 class Category(models.Model):

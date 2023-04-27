@@ -9,7 +9,7 @@
         <div class="buttons" id="buttons">
             {% for category in categories %}
             {% if category.slug == slug %}
-            <a href="{% url 'tours:main_page' %}" class="usual-button active">{{ category }}</a>
+            <a href="{{ category.destination.get_absolute_url }}" class="usual-button active">{{ category }}</a>
             {% else %}
             <a href="{% url 'tours:category' category.slug %}" class="usual-button">{{ category }}</a>
             {% endif %}

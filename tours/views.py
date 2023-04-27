@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.views.generic import ListView
 from django.shortcuts import render
 
 from .models import Category, Date, Tour
@@ -25,3 +26,18 @@ def calendar_view(request):
     context = {'months': months}
     return render(request, 'calendar.html', context)
 
+
+class TourDestinationView(ListView):
+    model = Tour
+    page_kwarg = 'page'
+    paginate_by = 9
+    template_name = 'category.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page'] = context['page_obj']
+        context['categories'] = Category.objects.filter(destination__slug=self.kwargs['slug'])
+        return context
+
+    def get_queryset(self):
+        return super().get_queryset().filter(category__destination__slug=self.kwargs['slug']).order_by('pk')
