@@ -27,10 +27,15 @@ class TourDestinationAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    actions = ['fill_categories_without_destination']
     prepopulated_fields = {'slug': ('name',)}
     list_display = ['__str__', 'is_top_category', 'is_active']
     list_editable = ['is_top_category', 'is_active']
 
+    @admin.action(description='Сделать выделенные категории без страны категориями главной страны')
+    def fill_categories_without_destination(self, request, queryset):
+        main_destination = TourDestination.objects.get(is_main=True)
+        queryset.filter(destination=None).update(destination=main_destination)
 
 @admin.register(Departure)
 class DepartureAdmin(admin.ModelAdmin):
@@ -51,12 +56,7 @@ class TourAdmin(admin.ModelAdmin):
     list_editable = ['is_top_tour', 'is_active']
     prepopulated_fields = {'slug': ('name',)}
     inlines = [TourDayInline, DateInline]
-    actions = ['fill_tours_without_destination']
 
-    @admin.action(description='Выставить все из выделенных туров с незаполнеными полями страны как туры по Беларуси')
-    def fill_tours_without_destination(self, request, queryset):
-        main_destination = TourDestination.objects.get(is_main=True)
-        queryset.filter(destination=None).update(destination=main_destination)
 
 
 @admin.register(Date)

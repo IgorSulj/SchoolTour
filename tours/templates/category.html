@@ -5,7 +5,7 @@
 {% block content %}
 <div class="head__wrapper">
     <div class="head">
-        <h1>Туры школьникам по Беларуси</h1>
+        <h1>{{ destination.page_header|default:"Туры школьникам по Беларуси" }}</h1>
         <div class="buttons" id="buttons">
             {% for category in categories %}
             {% if category.slug == slug %}

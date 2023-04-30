@@ -10,6 +10,6 @@ urlpatterns = [
     path('', category_view, name='main_page'),
     path('categories/<slug:slug>/', category_view, name='category'),
     path('tours/<slug:slug>', DetailView.as_view(model=Tour, template_name='tour.html'), name='tour'),
-    path('<slug:slug>/', TourDestinationView.as_view(), name='destination'),
     path('calendar/', calendar_view, name='calendar'),
+    path('<slug:slug>/', TourDestinationView.as_view(), name='destination'),
 ]
