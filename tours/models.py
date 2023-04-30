@@ -35,6 +35,10 @@ class Category(models.Model):
     is_top_category = models.BooleanField(verbose_name='Отображать в меню?', db_index=True, default=False)
     is_active = models.BooleanField(verbose_name='Активная категория?', db_index=True, default=True)
 
+    def get_absolute_url(self):
+        return reverse("tours:category", kwargs={'slug': self.slug})
+    
+
     def __str__(self):
         return self.name
 
@@ -83,6 +87,10 @@ class Tour(models.Model):
     class Meta:
         verbose_name = 'Тур'
         verbose_name_plural = 'Туры'
+
+    def get_absolute_url(self):
+        return reverse('tours:tour', kwargs={'slug': self.slug})
+    
 
 
 class TourDay(models.Model):

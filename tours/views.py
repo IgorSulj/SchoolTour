@@ -19,6 +19,8 @@ def category_view(request, slug=None):
     paginator = Paginator(tours, 9)
     page = paginator.get_page(page)
     context = {'categories': categories, 'paginator': paginator, 'page': page, 'slug': slug}
+    if slug is not None:
+        context['destination'] = Category.objects.get(slug=slug).destination
     return render(request, 'category.html', context)
 
 
