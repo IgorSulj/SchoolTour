@@ -5,11 +5,11 @@
 {% block content %}
 <div class="head__wrapper">
     <div class="head">
-        <h1>Туры школьникам по Беларуси</h1>
+        <h1>{{ destination.page_header|default:"Туры школьникам по Беларуси" }}</h1>
         <div class="buttons" id="buttons">
             {% for category in categories %}
             {% if category.slug == slug %}
-            <a href="{% url 'tours:main_page' %}" class="usual-button active">{{ category }}</a>
+            <a href="{{ category.destination.get_absolute_url }}" class="usual-button active">{{ category }}</a>
             {% else %}
             <a href="{% url 'tours:category' category.slug %}" class="usual-button">{{ category }}</a>
             {% endif %}

@@ -1,15 +1,41 @@
 from django.contrib import admin
-from .models import Category, Departure, Tour, TourDay, Date
+from django.core.exceptions import ValidationError
+from .functions import count
+from .models import TourDestination, Category, Departure, Tour, TourDay, Date
 
 # Register your models here.
 
 
+@admin.register(TourDestination)
+class TourDestinationAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+    list_display = ['__str__', 'is_main']
+    list_editable = ['is_main']
+
+    def get_changelist_formset(self, request, **kwargs):
+        FormSet = super().get_changelist_formset(request, **kwargs)
+
+        class TourDestinationFormSet(FormSet):
+            def clean(self):
+                super().clean()
+                main_count = count(dest for dest in self.cleaned_data if dest['is_main'])
+                if main_count > 1:
+                    raise ValidationError('Главный тур уникален.')
+        
+        return TourDestinationFormSet
+ 
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    actions = ['fill_categories_without_destination']
     prepopulated_fields = {'slug': ('name',)}
     list_display = ['__str__', 'is_top_category', 'is_active']
     list_editable = ['is_top_category', 'is_active']
 
+    @admin.action(description='Сделать выделенные категории без страны категориями главной страны')
+    def fill_categories_without_destination(self, request, queryset):
+        main_destination = TourDestination.objects.get(is_main=True)
+        queryset.filter(destination=None).update(destination=main_destination)
 
 @admin.register(Departure)
 class DepartureAdmin(admin.ModelAdmin):
@@ -30,6 +56,7 @@ class TourAdmin(admin.ModelAdmin):
     list_editable = ['is_top_tour', 'is_active']
     prepopulated_fields = {'slug': ('name',)}
     inlines = [TourDayInline, DateInline]
+
 
 
 @admin.register(Date)

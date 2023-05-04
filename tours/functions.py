@@ -28,3 +28,7 @@ def sort_dates(dates_list):
     # for date in dates_list:
     #     while not is_same_month(current_month['month'], date.start_date):
     #         current_month = {'month': }
+
+
+def count(iterable):
+    return sum(1 for _ in iterable)

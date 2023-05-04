@@ -2,7 +2,7 @@ from django.urls import path
 from django.views.generic import DetailView
 
 from .models import Tour
-from .views import calendar_view, category_view
+from .views import calendar_view, category_view, TourDestinationView
 
 app_name = 'tours'
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('categories/<slug:slug>/', category_view, name='category'),
     path('tours/<slug:slug>', DetailView.as_view(model=Tour, template_name='tour.html'), name='tour'),
     path('calendar/', calendar_view, name='calendar'),
+    path('<slug:slug>/', TourDestinationView.as_view(), name='destination'),
 ]

@@ -13,7 +13,9 @@
     <header>
         <a class="logo" href="{% url 'tours:main_page' %}"></a>
         <div id="header__menu">
-            <div class="menu"><a href="{% url 'tours:main_page' %}">Туры по Беларуси</a></div>
+            {% for dest in destinations %}
+            <div class="menu"><a href="{{ dest.get_absolute_url }}">{{ dest }}</a></div>
+            {% endfor %}
             <div class="menu"><a href="{% url 'tours:calendar' %}">Календарь поездок</a></div>
             {% for link in hot_links %}
             <div class="menu"><a href="{{ link.link }}">{{ link.name }}</a></div>
