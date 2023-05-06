@@ -221,4 +221,6 @@ body, h1, h2, h3 {
 
 article {
   flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=base.css.map */
