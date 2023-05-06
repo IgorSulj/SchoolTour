@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Главная{% endblock title %}
-{% block head %}<link rel="stylesheet" href="{% static 'css/category.css' %}?7">{% endblock head %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/category.css' %}?8">{% endblock head %}
 {% block content %}
 <div class="head__wrapper">
     <div class="head">
-        <h1>{{ destination.page_header|default:"Туры школьникам по Беларуси" }}</h1>
+        <h1>{{ destination.page_header|default:"Туры школьникам" }}</h1>
         <div class="buttons" id="buttons">
             {% for category in categories %}
             {% if category.slug == slug %}

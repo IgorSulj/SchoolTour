@@ -26,6 +26,10 @@ class TourDestination(models.Model):
         return reverse("tours:destination", kwargs={"slug": self.slug})
     
 
+class ActiveCategoryManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
 
 class Category(models.Model):
     destination = models.ForeignKey(TourDestination, on_delete=models.PROTECT, verbose_name='Страна', related_name='categories',
@@ -34,6 +38,9 @@ class Category(models.Model):
     slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
     is_top_category = models.BooleanField(verbose_name='Отображать в меню?', db_index=True, default=False)
     is_active = models.BooleanField(verbose_name='Активная категория?', db_index=True, default=True)
+
+    objects = models.Manager()
+    active = ActiveCategoryManager()
 
     def get_absolute_url(self):
         return reverse("tours:category", kwargs={'slug': self.slug})
