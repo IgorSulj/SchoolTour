@@ -9,14 +9,20 @@ from .functions import sort_dates
 
 # Create your views here.
         
+def main_page(request):
+    page = request.GET.get('page', 1)
+    destinations = TourDestination.objects.all()
+    tours = Tour.active.all().order_by('pk')
+    paginator = Paginator(tours, 9)
+    page = paginator.get_page(page)
+    context = {'categories': destinations, 'paginator': paginator, 'page': page}
+    return render(request, 'category.html', context)
 
-
-def category_view(request, slug=None):
+def category_view(request, slug):
     page = request.GET.get("page", 1)
-    destination_dict = {} if slug is None else {'destination': Category.objects.get(slug=slug).destination}
+    destination_dict = {'destination': Category.objects.get(slug=slug).destination}
     categories = Category.active.filter(**destination_dict)
-    tours = Tour.active.all() if slug is None else Tour.active.filter(category__slug=slug)
-    tours = tours.order_by('pk')
+    tours = Tour.active.filter(category__slug=slug).order_by('pk')
     paginator = Paginator(tours, 9)
     page = paginator.get_page(page)
     context = {'categories': categories, 'paginator': paginator, 'page': page, 'slug': slug}
@@ -48,5 +54,6 @@ class TourDestinationView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = self.object.categories.filter(is_active=True)
+        context['note'] = self.object.description
         context.update(self.get_tours_paginator())
         return context

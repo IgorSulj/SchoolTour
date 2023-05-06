@@ -11,7 +11,7 @@
             {% if category.slug == slug %}
             <a href="{{ category.destination.get_absolute_url }}" class="usual-button active">{{ category }}</a>
             {% else %}
-            <a href="{% url 'tours:category' category.slug %}" class="usual-button">{{ category }}</a>
+            <a href="{{ category.get_absolute_url }}" class="usual-button">{{ category }}</a>
             {% endif %}
             
             {% endfor %}
@@ -46,7 +46,9 @@
     <a href="?page={{ num }}" class="button">{{ num }}</a>
     {% endfor %}
 </div>
+{% if note %}
 <p class="note">
-    Здесь Вы можете познакомиться с наиболее популярными маршрутами экскурсий и туров. Также, по Вашему желанию мы разработаем  новые маршруты как по Беларуси, так и по России, Европе. Для этого необходимо связаться с нами любым удобным способом: телефон +375 33 649 93 76 или электронная почта infooffice.rabota@gmail.com
+    {{ note|linebreaksbr }}
 </p>
+{% endif %}
 {% endblock content %}
