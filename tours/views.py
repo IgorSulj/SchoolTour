@@ -13,14 +13,14 @@ from .functions import sort_dates
 
 def category_view(request, slug=None):
     page = request.GET.get("page", 1)
-    categories = Category.objects.filter(is_active=True)
+    destination_dict = {} if slug is None else {'destination': Category.objects.get(slug=slug).destination}
+    categories = Category.active.filter(**destination_dict)
     tours = Tour.active.all() if slug is None else Tour.active.filter(category__slug=slug)
     tours = tours.order_by('pk')
     paginator = Paginator(tours, 9)
     page = paginator.get_page(page)
     context = {'categories': categories, 'paginator': paginator, 'page': page, 'slug': slug}
-    if slug is not None:
-        context['destination'] = Category.objects.get(slug=slug).destination
+    context.update(destination_dict)
     return render(request, 'category.html', context)
 
 
