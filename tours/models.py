@@ -10,6 +10,7 @@ class TourDestination(models.Model):
     slug = models.SlugField(max_length=150, verbose_name='URI', db_index=True)
     full_name = models.CharField(max_length=150, verbose_name='Полное название', blank=True, null=True)
     is_main = models.BooleanField(default=False, verbose_name='Главная страна?')
+    description = models.TextField(verbose_name='Описание', default='')
 
     class Meta:
         verbose_name = 'Страна'
