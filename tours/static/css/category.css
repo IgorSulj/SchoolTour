@@ -83,7 +83,7 @@
 .tours__wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .tours {
@@ -92,6 +92,7 @@
   justify-content: center;
   gap: 80px;
   max-width: 1440px;
+  width: 100%;
   padding: 0 40px;
   margin: 0 0 80px;
   flex-grow: 1;
