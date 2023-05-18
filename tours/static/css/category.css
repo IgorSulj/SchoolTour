@@ -80,6 +80,11 @@
   margin-bottom: 30px;
 }
 
+.tours__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .tours {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(auto, 400px));

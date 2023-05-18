@@ -18,28 +18,30 @@
         </div>
     </div>
 </div>
-<div class="tours">
-    {% for tour in page.object_list %}
-    <a href="{% url 'tours:tour' tour.slug %}" class="tour-wrapper">
-        <div class="tour">
-            <img class="image" src="{% if tour.image %}{{ tour.image.url }}{% endif %}" alt="{% if tour.image_alt %}{{ tour.image_alt }}{% endif %}">
-            <div class="info">
-                <div class="days-place">
-                    <p class="days">Дней: {{ tour.days.count }}</p>
-                    {% if tour.departure %}
-                    <div class="place">
-                        <div class="place__icon"></div>
-                        <p class="place__text">{{ tour.departure }}</p>
-                    </div>
-                    {% endif %}
-                </div>            
-                <p class="name">{{ tour.name }}</p>
-                <p class="subname">{{ tour.subname }}</p>
-                <div class="booking">Подробнее</div>
+<div class="tours__wrapper">
+    <div class="tours">
+        {% for tour in page.object_list %}
+        <a href="{% url 'tours:tour' tour.slug %}" class="tour-wrapper">
+            <div class="tour">
+                <img class="image" src="{% if tour.image %}{{ tour.image.url }}{% endif %}" alt="{% if tour.image_alt %}{{ tour.image_alt }}{% endif %}">
+                <div class="info">
+                    <div class="days-place">
+                        <p class="days">Дней: {{ tour.days.count }}</p>
+                        {% if tour.departure %}
+                        <div class="place">
+                            <div class="place__icon"></div>
+                            <p class="place__text">{{ tour.departure }}</p>
+                        </div>
+                        {% endif %}
+                    </div>            
+                    <p class="name">{{ tour.name }}</p>
+                    <p class="subname">{{ tour.subname }}</p>
+                    <div class="booking">Подробнее</div>
+                </div>
             </div>
-        </div>
-    </a>
-    {% endfor %}
+        </a>
+        {% endfor %}
+    </div>
 </div>
 <div class="pages">
     {% for num in paginator.page_range %}
